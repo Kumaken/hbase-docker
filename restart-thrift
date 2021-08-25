@@ -2,5 +2,7 @@ logs_dir=/data/logs
 
 # Thrift server (background)
 # Ports: 9090 API and 9095 UI
+echo "RESTARTING THRIFT CRON"
+echo `date` 
 echo "hbase thrift start logging to $logs_dir/hbase-thrift.log"
 hbase thrift start > $logs_dir/hbase-thrift.log 2>&1 &
