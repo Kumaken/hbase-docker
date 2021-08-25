@@ -41,6 +41,7 @@ EXPOSE 16010
 
 # PREPARE CRON
 # 1. install lsof to kill previously used ports when restarting
+RUN apt-get update
 RUN apt-get install lsof
 # 2. cron job:
 RUN apt-get update && apt-get -y install cron
