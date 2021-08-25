@@ -38,4 +38,18 @@ EXPOSE 2181
 # HBase Master web UI at :16010/master-status;  ZK at :16010/zk.jsp
 EXPOSE 16010
 
-CMD ["/opt/hbase-server"]
+
+# PREPARE CRON
+# 1. install lsof to kill previously used ports when restarting
+RUN apt-get install lsof
+# 2. cron job:
+RUN apt-get update && apt-get -y install cron
+COPY thrift-cron /etc/cron.d/thrift-cron
+# Give execution rights on the cron job
+RUN chmod 0644 /etc/cron.d/thrift-cron
+# Apply cron job
+RUN crontab /etc/cron.d/thrift-cron
+# Create the log file to be able to run tail
+RUN touch /var/log/cron.log
+
+CMD ["/opt/hbase-server", "cron"]
