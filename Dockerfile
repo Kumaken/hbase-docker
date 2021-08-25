@@ -46,6 +46,7 @@ RUN apt-get install lsof
 # 2. cron job:
 RUN apt-get update && apt-get -y install cron
 COPY thrift-cron /etc/cron.d/thrift-cron
+COPY restart-thrift /etc/cron.d/restart-thrift
 # Give execution rights on the cron job
 RUN chmod 0644 /etc/cron.d/thrift-cron
 # Apply cron job
@@ -53,4 +54,4 @@ RUN crontab /etc/cron.d/thrift-cron
 # Create the log file to be able to run tail
 RUN touch /var/log/cron.log
 
-CMD ["/opt/hbase-server", "cron"]
+CMD ["/opt/hbase-server & cron && tail -f /var/log/cron.log"]
