@@ -52,7 +52,9 @@ RUN chmod 0644 /etc/cron.d/thrift-cron
 RUN chmod 0744 /etc/cron.d/restart-thrift
 # Apply cron job
 RUN crontab /etc/cron.d/thrift-cron
+# Create the log file to be able to run tail
+RUN touch /var/log/cron.log
 
 RUN apt-get -y install vim
 
-CMD /opt/hbase-server
+CMD /opt/hbase-server & cron
