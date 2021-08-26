@@ -5,4 +5,5 @@ logs_dir=/data/logs
 echo "RESTARTING THRIFT CRON"
 echo `date` 
 echo "hbase thrift start logging to $logs_dir/hbase-thrift.log"
+kill $(lsof -t -i:9095)
 hbase thrift start > $logs_dir/hbase-thrift.log 2>&1 &
