@@ -53,4 +53,6 @@ RUN chmod 0744 /etc/cron.d/restart-thrift
 # Apply cron job
 RUN crontab /etc/cron.d/thrift-cron
 
+RUN apt-get -y install vim
+
 CMD /opt/hbase-server
