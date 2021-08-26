@@ -57,4 +57,5 @@ RUN touch /var/log/cron.log
 
 RUN apt-get -y install vim
 
+# MUST BE THIS ALONE (IF YOU ADD CRON, it will shut down immediately)
 CMD /opt/hbase-server

@@ -19,6 +19,7 @@ hbase thrift start > $logs_dir/hbase-thrift.log 2>&1 &
 echo "hbase rest start logging to $logs_dir/hbase-rest.log"
 hbase rest start > $logs_dir/hbase-rest.log 2>&1 &
 
+# RUN CRON
 cron
 
 # Master server (Foreground) that also starts the region server
