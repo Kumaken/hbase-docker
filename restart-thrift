@@ -1,3 +1,4 @@
+#!/bin/bash
 logs_dir=/data/logs
 
 # Thrift server (background)
