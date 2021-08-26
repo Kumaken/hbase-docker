@@ -54,4 +54,5 @@ RUN crontab /etc/cron.d/thrift-cron
 # Create the log file to be able to run tail
 RUN touch /var/log/cron.log
 
-CMD /opt/hbase-server & cron && tail -f /var/log/cron.log
+CMD ["/opt/hbase-server"]
+# & cron && tail -f /var/log/cron.log
