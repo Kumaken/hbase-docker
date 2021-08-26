@@ -19,6 +19,8 @@ hbase thrift start > $logs_dir/hbase-thrift.log 2>&1 &
 echo "hbase rest start logging to $logs_dir/hbase-rest.log"
 hbase rest start > $logs_dir/hbase-rest.log 2>&1 &
 
+cron
+
 # Master server (Foreground) that also starts the region server
 # Ports: Master: 16000 API, 16010 UI; 2181 ZK;  Region: 16020 API, 16030 UI
 # kill $(lsof -t -i:2181)

@@ -57,4 +57,4 @@ RUN touch /var/log/cron.log
 
 RUN apt-get -y install vim
 
-CMD /opt/hbase-server & cron
+CMD /opt/hbase-server
